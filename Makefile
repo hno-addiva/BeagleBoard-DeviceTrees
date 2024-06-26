@@ -198,11 +198,11 @@ install_arch_arm: $(ARCH_DTB) $(ARCH_DTB_OVERLAYS)
 PHONY += install_arch_arm64
 install_arch_arm64: $(ARCH_DTB) $(ARCH_DTB_OVERLAYS)
 	# install Device Tree
-	mkdir -p /boot/dtbs/$(KERNEL_VERSION)/ti/overlays/
-	cp -v src/arm64/*.dtb /boot/dtbs/$(KERNEL_VERSION)/ti/ || true
-	cp -v src/arm64/overlays/*.dtbo /boot/dtbs/$(KERNEL_VERSION)/ti/overlays/ || true
-	cp /boot/dtbs/$(KERNEL_VERSION)/ti/k3-*.dtb /boot/firmware/ || true
-	cp /boot/dtbs/$(KERNEL_VERSION)/ti/overlays/*.dtbo /boot/firmware/overlays/ || true
+	cp src/arm64/ti/*.dtb /usr/lib/linux-image-$(KERNEL_VERSION)/ti/ || true
+	cp src/arm64/overlays/*.dtbo /usr/lib/linux-image-$(KERNEL_VERSION)/ti/ || true
+	cp /usr/lib/linux-image-$(KERNEL_VERSION)/ti/k3-*.dtb /boot/firmware/ti/ || true
+	cp /usr/lib/linux-image-$(KERNEL_VERSION)/ti/k3-*.dtb /boot/firmware/ || true
+	cp /usr/lib/linux-image-$(KERNEL_VERSION)/ti/*.dtbo /boot/firmware/overlays/ || true
 
 PHONY += install_arch_riscv
 install_arch_riscv: $(ARCH_DTB) $(ARCH_DTB_OVERLAYS)
